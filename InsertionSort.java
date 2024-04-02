@@ -19,42 +19,28 @@ public class InsertionSort {
     // ***********************************************************
 
     int insertAfter;
-    boolean inBetween; 
+    boolean inBetween;
     while (!unsorted.isEmpty()) {
 
       for (int i = 0; i < unsorted.size(); i++) {
         insertAfter = 0;
-        inBetween = false; 
-        System.out.println("unsorted: " + unsorted);
-        System.out.println("sorted: " + sorted);
+        inBetween = false;
         Card c = unsorted.remove(0);
         for (int j = 0; j < sorted.size(); j++) {
-          System.out.println("first card: " + c);
-          System.out.println("comparing to: " + sorted.get(j));
           if (c.compareTo(sorted.get(j)) > 0) {
-            System.out.println("found");
             insertAfter = j;
-            inBetween = true; 
+            inBetween = true;
           }
         }
         if (sorted.isEmpty()) {
           sorted.add(c);
-        } else if (sorted.size() == 1) {
-          if (c.compareTo(sorted.get(0)) < 0) {
-            sorted.insertBefore(c, sorted.get(0));
-          } else {
-            sorted.insertAfter(c, sorted.get(0));
-          }
         } else {
-          if(inBetween) {
+          if (inBetween) {
             sorted.insertAfter(c, sorted.get(insertAfter));
-          }
-          else {
-            sorted.insertBefore(c, sorted.get(0)); 
+          } else {
+            sorted.insertBefore(c, sorted.get(0));
           }
         }
-        //
-        System.out.println(sorted);
         record.next(); // tell it this is a new step
         record.add(sorted); // the allegedly sorted pile
         record.add(unsorted); // the unsorted pile
@@ -77,7 +63,7 @@ public class InsertionSort {
 
     // for debugging purposes, uncomment this to
     // work with a smaller number of cards:
-    //cards = cards.split(cards.get(39));
+    // cards = cards.split(cards.get(39));
 
     // mix up the cards
     Collections.shuffle(cards);

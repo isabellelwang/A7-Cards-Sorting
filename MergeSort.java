@@ -16,7 +16,11 @@ public class MergeSort {
     //           record.add(pile);
     //        }
     // ***********************************************************
+    
 
+    for(Card c: unsorted) {
+      queue.add(new CardPile()); 
+    }
     // return the sorted result here
     return queue.remove();
   }
