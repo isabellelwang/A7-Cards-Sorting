@@ -22,16 +22,17 @@ public class FakeSort {
     // Here, we just move them in the same order they came in
     CardPile sorted = new CardPile();
 
-    // Card c1 = unsorted.removeFirst();
-    // Card c2 = unsorted.removeLast();
+    Card c1 = unsorted.removeFirst();
+    Card c2 = unsorted.removeLast();
 
-    // System.out.println(c1 + " vs. " + c2);
+    System.out.println(c1 + " vs. " + c2);
 
-    // if (c1.compareTo(c2) > 0) {
-    // System.out.println("C1 is bigger!");
-    // } else {
-    // System.out.println("C2 is bigger!");
-    // }
+    if (c1.compareTo(c2) > 0) {
+    System.out.println("C1 is bigger!");
+    System.out.println(c1.compareTo(c2));
+    } else {
+    System.out.println("C2 is bigger!");
+    }
 
     while (unsorted.size() > 0) {
       // move one card between piles
