@@ -3,16 +3,62 @@ import java.util.Collections;
 
 public class MergeSort {
 
-  // public static ArrayDeque<CardPile> merge (ArrayDeque<CardPile> unsorted) {
-  // ArrayDeque<CardPile> sorted = new ArrayDeque<>();
+  public static CardPile merge(ArrayDeque<CardPile> unsorted) {
+    CardPile sorted = new CardPile();
 
-  // while(!unsorted.isEmpty()) {
-  // for(int i = 0; i < )
+    if (sorted.size() == 1) {
+      System.out.println("hello");
+      return sorted;
+    } else {
+      System.out.println("be");
+      CardPile pile1 = unsorted.removeFirst();
+      CardPile pile2 = unsorted.removeFirst();
+      System.out.println(pile1);
+      System.out.println(pile2);
 
-  // }
+      int numRounds = 0; 
+      CardPile largerPile; 
+      if(pile1.getFirst().compareTo(pile2.getFirst()) < 0) {
+        numRounds = pile1.size(); 
+        largerPile = pile2; 
+      }
+      else {
+        numRounds = pile2.size(); 
+        largerPile = pile1; 
+      }
 
-  // return sorted;
-  // }
+      for(int i = 0; i < numRounds; i++) {
+        if(pile1.get(i).compareTo(pile2.get(i)) < 0) {
+          sorted.addLast(pile1.remove(i)); 
+        }
+        else if(pile2.get(i).compareTo(pile1.get(i)) < 0) {
+          sorted.addLast(pile2.remove(i)); 
+        }
+        System.out.println("sorted:" + sorted);
+      }
+      sorted.append(largerPile); 
+      System.out.println("sorted2:" + sorted);
+      unsorted.addLast(sorted); 
+      System.out.println("unsorted:" + unsorted);
+
+      // for (int i = 0; i < pile1.size(); i++) {
+      //   for(int j = 0; j < pile2.size(); j++) {
+      //     System.out.println("inside");
+      //     if (pile1.get(i).compareTo(pile2.get(j)) < 0) {
+      //       System.out.println("comparing");
+      //       if(!sorted.contains((pile1.get(i)))) {
+      //         System.out.println("not in");
+      //         sorted.addLast(pile1.get(i));
+      //         System.out.println("sorted: " + sorted);
+      //       }
+      //     }
+      //   }
+       
+      // }
+  
+      return MergeSort.merge(unsorted);
+    }
+  }
 
   public static CardPile sort(CardPile unsorted, SortRecorder record) {
 
@@ -36,35 +82,44 @@ public class MergeSort {
     }
 
     System.out.println("original queue: " + queue);
-    Card mergeTwoCards[] = new Card[2];
 
-    int queueSize = queue.size();
-    int numRounds = queue.size() / 2;
 
-    while (queue.size() > 1) {
-      for (int i = 0; i < numRounds; i++) {
-        System.out.println(numRounds);
-        System.out.println("merging");
+    CardPile sorted = MergeSort.merge(queue); 
+    //Card mergeTwoCards[] = new Card[2];
 
-        // merge singles into pairs
-        mergeTwoCards[0] = queue.removeFirst().locateCard(0, 0);
-        System.out.println("First card:" + mergeTwoCards[0]);
-        mergeTwoCards[1] = queue.removeFirst().locateCard(0, 0);
-        System.out.println("Second card:" + mergeTwoCards[1]);
-        queue.addLast(new CardPile(mergeTwoCards, 0, 0));
+    // int queueSize = queue.size();
+    // int numRounds = queue.size() / 2;
 
-        // if odd number of cards, remove first single and move to back
-        if (queueSize % 2 == 1 && i == (numRounds - 1)) {
-          System.out.println("yes");
-          System.out.println("last indexs: " + i);
-          queue.addLast(queue.removeFirst());
-        }
+    // while (queue.size() > 1) {
 
-        System.out.println(queue);
-        System.out.println(queue.size());
-      }
-    }
+    // }
 
+    // while (queue.size() > 1) {
+    //   for (int i = 0; i < numRounds; i++) {
+    //     System.out.println(numRounds);
+    //     System.out.println("merging");
+
+    //     // merge singles into pairs
+    //     mergeTwoCards[0] = queue.removeFirst().locateCard(0, 0);
+    //     System.out.println("First card:" + mergeTwoCards[0]);
+    //     mergeTwoCards[1] = queue.removeFirst().locateCard(0, 0);
+    //     System.out.println("Second card:" + mergeTwoCards[1]);
+    //     queue.addLast(new CardPile(mergeTwoCards, 0, 0));
+
+    //     // if odd number of cards, remove first single and move to back
+    //     if (queueSize % 2 == 1 && i == (numRounds - 1)) {
+    //       System.out.println("yes");
+    //       System.out.println("last indexs: " + i);
+    //       queue.addLast(queue.removeFirst());
+    //     }
+
+    //     System.out.println(queue);
+    //     System.out.println(queue.size());
+    //   }
+    // }
+
+    queue.clear(); 
+    queue.addFirst(sorted); 
     System.out.println(queue);
 
     // System.out.println(queue);
