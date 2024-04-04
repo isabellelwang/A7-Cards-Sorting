@@ -3,6 +3,17 @@ import java.util.Collections;
 
 public class MergeSort {
 
+  // public static ArrayDeque<CardPile> merge (ArrayDeque<CardPile> unsorted) {
+  // ArrayDeque<CardPile> sorted = new ArrayDeque<>();
+
+  // while(!unsorted.isEmpty()) {
+  // for(int i = 0; i < )
+
+  // }
+
+  // return sorted;
+  // }
+
   public static CardPile sort(CardPile unsorted, SortRecorder record) {
 
     ArrayDeque<CardPile> queue = new ArrayDeque<CardPile>();
@@ -29,26 +40,29 @@ public class MergeSort {
 
     int queueSize = queue.size();
     int numRounds = queue.size() / 2;
-    for (int i = 0; i < numRounds; i++) {
-      System.out.println(numRounds);
-      System.out.println("merging");
 
-      //merge singles into pairs
-      mergeTwoCards[0] = queue.removeFirst().locateCard(0, 0);
-      System.out.println("First card:" + mergeTwoCards[0]);
-      mergeTwoCards[1] = queue.removeFirst().locateCard(0, 0);
-      System.out.println("Second card:" + mergeTwoCards[1]);
-      queue.addLast(new CardPile(mergeTwoCards, 0, 0));
+    while (queue.size() > 1) {
+      for (int i = 0; i < numRounds; i++) {
+        System.out.println(numRounds);
+        System.out.println("merging");
 
-      // if odd number of cards, remove first single and move to back
-      if (queueSize % 2 == 1 && i == (numRounds - 1)) {
-        System.out.println("yes");
-        System.out.println("last indexs: " + i);
-        queue.addLast(queue.removeFirst());
+        // merge singles into pairs
+        mergeTwoCards[0] = queue.removeFirst().locateCard(0, 0);
+        System.out.println("First card:" + mergeTwoCards[0]);
+        mergeTwoCards[1] = queue.removeFirst().locateCard(0, 0);
+        System.out.println("Second card:" + mergeTwoCards[1]);
+        queue.addLast(new CardPile(mergeTwoCards, 0, 0));
+
+        // if odd number of cards, remove first single and move to back
+        if (queueSize % 2 == 1 && i == (numRounds - 1)) {
+          System.out.println("yes");
+          System.out.println("last indexs: " + i);
+          queue.addLast(queue.removeFirst());
+        }
+
+        System.out.println(queue);
+        System.out.println(queue.size());
       }
-
-      System.out.println(queue);
-      System.out.println(queue.size());
     }
 
     System.out.println(queue);
