@@ -6,56 +6,95 @@ public class MergeSort {
   public static CardPile merge(ArrayDeque<CardPile> unsorted) {
     CardPile sorted = new CardPile();
 
-    if (sorted.size() == 1) {
+    if (unsorted.size() == 1) {
       System.out.println("hello");
       return sorted;
     } else {
       System.out.println("be");
       CardPile pile1 = unsorted.removeFirst();
       CardPile pile2 = unsorted.removeFirst();
-      System.out.println(pile1);
-      System.out.println(pile2);
+      System.out.println("Pile1: " + pile1);
+      System.out.println("Pile2:" + pile2);
 
-      int numRounds = 0; 
-      CardPile largerPile; 
-      if(pile1.getFirst().compareTo(pile2.getFirst()) < 0) {
-        numRounds = pile1.size(); 
-        largerPile = pile2; 
+      int numRounds = 0;
+      // CardPile largerPile;
+      // CardPile smallerPile;
+
+      // if (pile1.getFirst().compareTo(pile2.getFirst()) < 0) {
+      // numRounds = pile1.size();
+      // smallerPile = pile1;
+      // largerPile = pile2;
+      // } else {
+      // numRounds = pile2.size();
+      // largerPile = pile1;
+      // smallerPile = pile2;
+      // }
+
+      // // need two for loops
+      // for (int j = 0; j < smallerPile.size(); j++) {
+      // for (int i = 0; i < largerPile.size(); i++) {
+      // if (smallerPile.get(j).compareTo(largerPile.get(i)) < 0) {
+      // sorted.addLast(smallerPile.remove(i));
+      // // } else if (largerPile.get(i).compareTo(smallerPile.get(j)) < 0) {
+      // // sorted.addLast(largerPile.remove(j));
+      // }
+      // System.out.println("sorted:" + sorted);
+      // }
+      // }
+
+      for (int i = 0; i < pile1.size(); i++) {
+        for (int j = 0; j < pile2.size(); j++) {
+
+          if (!pile1.peekFirst().equals(null) || !pile2.peekFirst().equals(null)) {
+            if (pile1.peekFirst().compareTo(pile2.peekFirst()) < 0) {
+              sorted.addLast(pile1.removeFirst());
+              System.out.println("p1" + pile1);
+            } else if (pile2.peekFirst().compareTo(pile1.peekFirst()) < 0) {
+              sorted.addLast(pile2.removeFirst());
+              System.out.println("p2:" + pile2);
+            }
+            System.out.println("sorted:" + sorted);
+          }
+        }
       }
-      else {
-        numRounds = pile2.size(); 
-        largerPile = pile1; 
+      System.out.println("After p1: " + pile1);
+      System.out.println("After p2" + pile2);
+
+      if (!pile1.isEmpty() && !pile2.isEmpty()) {
+        if (pile1.getFirst().compareTo(pile2.getFirst()) < 0) {
+          sorted.append(pile1);
+          sorted.append(pile2);
+        } else {
+          sorted.append(pile2);
+          sorted.append(pile1);
+        }
+        // for (int i = 0; i < pile1.size(); i++) {
+        // for (int j = 0; j < pile2.size(); j++) {
+        // if (!pile1.peekFirst().equals(null) || !pile2.peekFirst().equals(null)) {
+        // if (pile1.peekFirst().compareTo(pile2.peekFirst()) < 0) {
+        // sorted.addLast(pile1.removeFirst());
+        // System.out.println("p1" + pile1);
+        // } else if (pile2.peekFirst().compareTo(pile1.peekFirst()) < 0) {
+        // sorted.addLast(pile2.removeFirst());
+        // System.out.println("p2:" + pile2);
+        // }
+        // System.out.println("sorted:" + sorted);
+        // }
+        // }
+      } else {
+        if (!pile1.isEmpty()) {
+          System.out.println("appending piel1");
+          sorted.append(pile1);
+        } else if (!pile2.isEmpty()) {
+          System.out.println("appending piel2");
+          sorted.append(pile2);
+        }
       }
 
-      for(int i = 0; i < numRounds; i++) {
-        if(pile1.get(i).compareTo(pile2.get(i)) < 0) {
-          sorted.addLast(pile1.remove(i)); 
-        }
-        else if(pile2.get(i).compareTo(pile1.get(i)) < 0) {
-          sorted.addLast(pile2.remove(i)); 
-        }
-        System.out.println("sorted:" + sorted);
-      }
-      sorted.append(largerPile); 
       System.out.println("sorted2:" + sorted);
-      unsorted.addLast(sorted); 
+      unsorted.addLast(sorted);
       System.out.println("unsorted:" + unsorted);
 
-      // for (int i = 0; i < pile1.size(); i++) {
-      //   for(int j = 0; j < pile2.size(); j++) {
-      //     System.out.println("inside");
-      //     if (pile1.get(i).compareTo(pile2.get(j)) < 0) {
-      //       System.out.println("comparing");
-      //       if(!sorted.contains((pile1.get(i)))) {
-      //         System.out.println("not in");
-      //         sorted.addLast(pile1.get(i));
-      //         System.out.println("sorted: " + sorted);
-      //       }
-      //     }
-      //   }
-       
-      // }
-  
       return MergeSort.merge(unsorted);
     }
   }
@@ -83,9 +122,8 @@ public class MergeSort {
 
     System.out.println("original queue: " + queue);
 
-
-    CardPile sorted = MergeSort.merge(queue); 
-    //Card mergeTwoCards[] = new Card[2];
+    CardPile sorted = MergeSort.merge(queue);
+    // Card mergeTwoCards[] = new Card[2];
 
     // int queueSize = queue.size();
     // int numRounds = queue.size() / 2;
@@ -95,31 +133,31 @@ public class MergeSort {
     // }
 
     // while (queue.size() > 1) {
-    //   for (int i = 0; i < numRounds; i++) {
-    //     System.out.println(numRounds);
-    //     System.out.println("merging");
+    // for (int i = 0; i < numRounds; i++) {
+    // System.out.println(numRounds);
+    // System.out.println("merging");
 
-    //     // merge singles into pairs
-    //     mergeTwoCards[0] = queue.removeFirst().locateCard(0, 0);
-    //     System.out.println("First card:" + mergeTwoCards[0]);
-    //     mergeTwoCards[1] = queue.removeFirst().locateCard(0, 0);
-    //     System.out.println("Second card:" + mergeTwoCards[1]);
-    //     queue.addLast(new CardPile(mergeTwoCards, 0, 0));
+    // // merge singles into pairs
+    // mergeTwoCards[0] = queue.removeFirst().locateCard(0, 0);
+    // System.out.println("First card:" + mergeTwoCards[0]);
+    // mergeTwoCards[1] = queue.removeFirst().locateCard(0, 0);
+    // System.out.println("Second card:" + mergeTwoCards[1]);
+    // queue.addLast(new CardPile(mergeTwoCards, 0, 0));
 
-    //     // if odd number of cards, remove first single and move to back
-    //     if (queueSize % 2 == 1 && i == (numRounds - 1)) {
-    //       System.out.println("yes");
-    //       System.out.println("last indexs: " + i);
-    //       queue.addLast(queue.removeFirst());
-    //     }
-
-    //     System.out.println(queue);
-    //     System.out.println(queue.size());
-    //   }
+    // // if odd number of cards, remove first single and move to back
+    // if (queueSize % 2 == 1 && i == (numRounds - 1)) {
+    // System.out.println("yes");
+    // System.out.println("last indexs: " + i);
+    // queue.addLast(queue.removeFirst());
     // }
 
-    queue.clear(); 
-    queue.addFirst(sorted); 
+    // System.out.println(queue);
+    // System.out.println(queue.size());
+    // }
+    // }
+
+    queue.clear();
+    queue.addFirst(sorted);
     System.out.println(queue);
 
     // System.out.println(queue);
@@ -133,7 +171,7 @@ public class MergeSort {
     SortRecorder recorder = new SortRecorder();
 
     // set up the deck of cards
-    // Card.loadImages(recorder);
+    Card.loadImages(recorder);
     CardPile cards = new CardPile(Card.newDeck(true), 2, 2);
 
     // for debugging purposes, uncomment this to
@@ -153,6 +191,6 @@ public class MergeSort {
     System.out.println(cards);
 
     // make window appear showing the record
-    // recorder.display("Card Sort Demo: Merge Sort");
+    recorder.display("Card Sort Demo: Merge Sort");
   }
 }
