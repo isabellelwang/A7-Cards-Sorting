@@ -2,6 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Collections;
 
 public class MergeSort {
+  
 
   public static CardPile merge(CardPile pile1, CardPile pile2) {
     CardPile sorted = new CardPile();
@@ -46,7 +47,7 @@ public class MergeSort {
       record.next(); // tell it this is a new step
       record.add(unsorted); // the unsorted pile
       for (CardPile p : queue) { // add all piles
-        record.add(pile);
+        record.add(p);
       }
     }
 
