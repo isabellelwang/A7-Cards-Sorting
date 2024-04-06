@@ -10,6 +10,7 @@ public class MergeSortTimer {
         } else {
             Card[] deck = Card.newDeck(true);
             CardPile cards = new CardPile();
+            cards = cards.split(cards.get(39));
 
             for (int i = 0; i < Integer.parseInt(args[0]); i++) {
                 cards.add(deck[(int) (52 * Math.random())]);
@@ -19,6 +20,13 @@ public class MergeSortTimer {
         }
     }
 
+    /**
+     * merge pile1 and pile2
+     * 
+     * @param pile1 cardpile 1
+     * @param pile2 cardpile 2
+     * @return sorted cardpile
+     */
     public static CardPile merge(CardPile pile1, CardPile pile2) {
         CardPile sorted = new CardPile();
 
@@ -38,6 +46,12 @@ public class MergeSortTimer {
         return sorted;
     }
 
+    /***
+     * sort cardpile without record using merge algorithm
+     * 
+     * @param unsorted unsorted cardpile
+     * @return sorted cardpile
+     */
     public static CardPile sort(CardPile unsorted) {
 
         ArrayDeque<CardPile> queue = new ArrayDeque<CardPile>();

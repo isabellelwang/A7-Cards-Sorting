@@ -11,45 +11,45 @@ your work, please indicate the status of each item
 
 ## Assignment Points:
 
-_____ 1 pt: Selection sort for CardPile sorts correctly
+__Yes___ 1 pt: Selection sort for CardPile sorts correctly
 
-_____ 1 pt: Selection sort for CardPile implemented efficiently
+___Yes__ 1 pt: Selection sort for CardPile implemented efficiently
 
-_____ 1 pt: Insertion sort for CardPile sorts correctly
+___Yes__ 1 pt: Insertion sort for CardPile sorts correctly
 
-_____ 1 pt: Insertion sort for CardPile implemented efficiently
+___yes__ 1 pt: Insertion sort for CardPile implemented efficiently
 
-_____ 1 pt: Merge sort for CardPile sorts correctly
+___yes__ 1 pt: Merge sort for CardPile sorts correctly
 
-_____ 1 pt: Merge sort for CardPile implemented efficiently
+___tes__ 1 pt: Merge sort for CardPile implemented efficiently
 
-_____ 1 pt: Quicksort for CardPile sorts correctly
+___yes__ 1 pt: Quicksort for CardPile sorts correctly
 
-_____ 1 pt: Quicksort for CardPile implemented efficiently
+yes_____ 1 pt: Quicksort for CardPile implemented efficiently
 
-_____ 1 pt: Implemented timing versions of at least three sort algorithms
+yes_____ 1 pt: Implemented timing versions of at least three sort algorithms
 
-_____ 1 pt: Summary of timing results written up in readme
+___yes__ 1 pt: Summary of timing results written up in readme
 
 
 ## General Items:
 
-_____ 4 pts: Program compiles without errors or warnings
+___yes__ 4 pts: Program compiles without errors or warnings
 
-_____ 2 pts: Executes fully & consistently without crashing (exception/freeze)
+__yes___ 2 pts: Executes fully & consistently without crashing (exception/freeze)
 
-_____ 2 pt: Complies with style guidelines (missing items 1 pt each):
+___yes__ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
-      _____ Classes & class members all have Javadoc header comments
+      ___yes__ Classes & class members all have Javadoc header comments
 
-      _____ Clear and consistent indentation of bracketed sections
+      ____yes_ Clear and consistent indentation of bracketed sections
 
-      _____ Adheres to Java conventions on naming & capitalization
+      ____yes_ Adheres to Java conventions on naming & capitalization
 
-      _____ Methods & variables all have clear and accurate names
+      ___yes__ Methods & variables all have clear and accurate names
 
-      _____ Methods avoid confusing side effects
+      __yes___ Methods avoid confusing side effects
 
-_____ 1 pt: All required files included with submission
+__yes___ 1 pt: All required files included with submission
 
-_____ 1 pt: readme.md contains reflection on the assignment
+___yes__ 1 pt: readme.md contains reflection on the assignment

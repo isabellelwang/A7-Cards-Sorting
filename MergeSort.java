@@ -3,7 +3,13 @@ import java.util.Collections;
 
 public class MergeSort {
   
-
+  /**
+   * Sorts cards using merge sort algorithm 
+   * 
+   * @param pile1 pile1 to be merged
+   * @param pile2 pile2 cards to be merged
+   * @return sorted card pile of pile 1 and pile2 merged
+   */
   public static CardPile merge(CardPile pile1, CardPile pile2) {
     CardPile sorted = new CardPile();
 
@@ -20,9 +26,16 @@ public class MergeSort {
     } else if (!pile2.isEmpty()) {
       sorted.append(pile2);
     }
+
     return sorted;
   }
 
+  /**
+   * Calls on merge method and sorts the cards 
+   * @param unsorted unsorted card pile to be sorted
+   * @param record SortRecorder keeping track of cards
+   * @return sorted CardPile
+   */
   public static CardPile sort(CardPile unsorted, SortRecorder record) {
 
     ArrayDeque<CardPile> queue = new ArrayDeque<CardPile>();

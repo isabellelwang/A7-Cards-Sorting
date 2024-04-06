@@ -2,6 +2,13 @@ import java.util.Collections;
 
 public class InsertionSort {
 
+  /**
+   * Sorts cards using insertion sort algorithm
+   * 
+   * @param unsorted unsorted card pile
+   * @param record   keeping record of sorting process
+   * @return CardPile of sorted cards
+   */
   public static CardPile sort(CardPile unsorted, SortRecorder record) {
 
     // register the starting configuration with the recorder
@@ -18,8 +25,8 @@ public class InsertionSort {
 
     // ***********************************************************
 
-    int insertAfter;
-    boolean inBetween;
+    int insertAfter; // index tracker of card will be inserted after
+    boolean inBetween; // keeps track if card can be inserted inbetween two cards
     while (!unsorted.isEmpty()) {
 
       for (int i = 0; i < unsorted.size(); i++) {
@@ -32,15 +39,20 @@ public class InsertionSort {
             inBetween = true;
           }
         }
+
+        // add card to sorted pile
         if (sorted.isEmpty()) {
           sorted.add(c);
         } else {
+          // if card can be inserted between two card, then insert after. otherwise insert
+          // in front
           if (inBetween) {
             sorted.insertAfter(c, sorted.get(insertAfter));
           } else {
             sorted.insertBefore(c, sorted.get(0));
           }
         }
+
         record.next(); // tell it this is a new step
         record.add(sorted); // the allegedly sorted pile
         record.add(unsorted); // the unsorted pile
@@ -52,6 +64,7 @@ public class InsertionSort {
 
   }
 
+  // running algorithm
   public static void main(String args[]) {
 
     // set up a class to record and display the sorting results

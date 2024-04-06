@@ -2,6 +2,13 @@ import java.util.Collections;
 
 public class Quicksort {
 
+  /**
+   * sorts card piles using quicksort algorithm
+   * 
+   * @param unsorted unsorted card pile
+   * @param record record to keep track of cards
+   * @return sorted cardpile 
+   */
   public static CardPile sort(CardPile unsorted, SortRecorder record) {
 
     // ***********************************************************

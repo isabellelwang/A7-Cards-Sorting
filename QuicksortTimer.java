@@ -1,10 +1,11 @@
-public class QuickSortTimer {
+public class QuicksortTimer {
     public static void main(String args[]) {
         if (args.length < 1) {
             System.err.println("Please specify how many cards to sort!");
         } else {
             Card[] deck = Card.newDeck(true);
             CardPile cards = new CardPile();
+            cards = cards.split(cards.get(39));
 
             for (int i = 0; i < Integer.parseInt(args[0]); i++) {
                 cards.add(deck[(int) (52 * Math.random())]);
@@ -15,7 +16,12 @@ public class QuickSortTimer {
         }
     }
 
-    /** This method actually doesn't sort at all */
+    /**
+     * Sorts card pile using quicksort algorithm without recorder
+     * 
+     * @param unsorted unsorted cardpile
+     * @return sorted card pile
+     */
     public static CardPile sort(CardPile unsorted) {
 
         // Now move cards from one list to another,

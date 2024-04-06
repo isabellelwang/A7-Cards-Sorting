@@ -5,6 +5,7 @@ public class SelectionSortTimer {
         } else {
             Card[] deck = Card.newDeck(true);
             CardPile cards = new CardPile();
+            cards = cards.split(cards.get(39));
 
             for (int i = 0; i < Integer.parseInt(args[0]); i++) {
                 cards.add(deck[(int) (52 * Math.random())]);
@@ -15,7 +16,12 @@ public class SelectionSortTimer {
         }
     }
 
-    /** This method actually doesn't sort at all */
+    /**
+     * sorted card pile using Selection sort without recorder
+     * 
+     * @param unsorted unsorted card pile
+     * @return sorted CardPile
+     */
     public static CardPile sort(CardPile unsorted) {
 
         // Now move cards from one list to another,
